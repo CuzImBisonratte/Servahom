@@ -1,3 +1,9 @@
+# Node.js stuff
 node_modules
+package-lock.json
+
+# Config
 config.json
+
+# Log files
 logs
