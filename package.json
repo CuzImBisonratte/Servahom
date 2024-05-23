@@ -6,6 +6,14 @@
     "name": "servahom",
     "version": "1.0.0",
     "main": "index.js",
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js",
+        "dev": "nodemon -q index.js"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/cuzimbisonratte/servahom.git"
