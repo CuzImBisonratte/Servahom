@@ -1,5 +1,19 @@
 {
-  "dependencies": {
-    "express": "^4.19.2"
-  }
+    "dependencies": {
+        "express": "^4.19.2"
+    },
+    "name": "servahom",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cuzimbisonratte/servahom.git"
+    },
+    "author": "Konstantin Protzen",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cuzimbisonratte/servahom/issues"
+    },
+    "homepage": "https://github.com/cuzimbisonratte/servahom#readme",
+    "description": ""
 }
