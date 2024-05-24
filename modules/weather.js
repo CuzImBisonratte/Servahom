@@ -7,7 +7,7 @@ const fs = require("fs");
 var api_options = {
     method: 'GET',
     url: 'https://api.openweathermap.org/data/2.5/forecast',
-    params: { lat: config.weather.lat, lon: config.weather.lon, appid: config.weather.api_key }
+    params: { lat: config.weather.lat, lon: config.weather.lon, appid: config.weather.api_key, units: 'metric' }
 };
 
 var lastResponse = {
