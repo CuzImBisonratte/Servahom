@@ -27,7 +27,7 @@ newData = () => {
             lastResponse.data = response.data;
             resolve();
         }).catch((error) => {
-            reject(error);
+            reject(error.response.status + " - " + error.response.statusText);
         });
     });
 }
