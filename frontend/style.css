@@ -1,0 +1,46 @@
+:root {
+    --background-color: #152636;
+    --background-color-tile: #1b1727;
+    --tile-border-color: #96a4c2;
+    --text-color: #fff;
+}
+
+body,
+html {
+    margin: 0;
+    inset: 0;
+    padding: 0;
+    font-size: 100%;
+    height: calc(100% - 0.5rem);
+}
+
+body {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "srv srv . . . weather weather weather"
+        "srv srv . . . weather weather weather"
+        "srv srv . . . . . ."
+        "srv srv . . . . . ."
+        "srv srv . . . . . .";
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body>div {
+    border: 1px solid var(--tile-border-color);
+    background-color: var(--background-color-tile);
+    border-radius: 1rem;
+}
+
+.srv {
+    grid-area: srv;
+}
+
+.weather {
+    grid-area: weather;
+}

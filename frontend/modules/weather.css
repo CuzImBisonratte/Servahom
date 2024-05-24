@@ -1,0 +1,88 @@
+.weather {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: min-content 1fr min-content min-content;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "weather-title_current weather-title_prev1 weather-title_day"
+        "weather-icon_current weather-icon_prev1 weather-icon_day"
+        "weather-temp_current weather-temp_prev1 weather-temp_day"
+        "weather-footer weather-footer weather-footer";
+}
+
+.weather-title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.weather-icon {
+    display: grid;
+    place-items: center;
+}
+
+.weather-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.weather-footer {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    grid-area: weather-footer;
+    color: #888;
+}
+
+.weather-footer a {
+    color: #888;
+}
+
+#weather-city {
+    color: #bbb;
+}
+
+.weather-temp {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.weather-title_current {
+    grid-area: weather-title_current;
+}
+
+.weather-title_day {
+    grid-area: weather-title_day;
+}
+
+.weather-title_prev1 {
+    grid-area: weather-title_prev1;
+}
+
+.weather-icon_current {
+    grid-area: weather-icon_current;
+}
+
+.weather-icon_prev1 {
+    grid-area: weather-icon_prev1;
+}
+
+.weather-icon_day {
+    grid-area: weather-icon_day;
+}
+
+.weather-temp_current {
+    grid-area: weather-temp_current;
+}
+
+.weather-temp_prev1 {
+    grid-area: weather-temp_prev1;
+}
+
+.weather-temp_day {
+    grid-area: weather-temp_day;
+}
