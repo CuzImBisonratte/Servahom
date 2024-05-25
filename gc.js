@@ -24,6 +24,9 @@ const init = () => {
  * Garbage collection function to run on exit
  */
 const exit = () => {
+    // Print shutdown message
+    console.clear();
+    log.log('Shutdown-Signal received', 1, "gc");
     log.log('Running shutdown garbage collection', 3, "gc");
     // res dir
     if (config.gc.res.deleteOnExit) {
