@@ -26,5 +26,10 @@ router.get("/weather/icons/:icon", (req, res, next) => {
     else weather.iconCacheHandler(req.params.icon, () => res.sendFile(__dirname + "/res/weather-icons/" + req.params.icon + ".png"));
 });
 
+// Upchecker
+const upchecker = require("./modules/upchecker.js");
+router.get("/upchecker", (req, res, next) => {
+    res.json(upchecker.getStatuses());
+});
 
 module.exports = router;
