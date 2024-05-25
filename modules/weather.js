@@ -42,7 +42,7 @@ newData = () => {
 getWeather = () => {
     return new Promise((resolve, reject) => {
         if (lastResponse.time + config.weather.timeout * 1000 < Date.now()) {
-            log.log("Refreshing weather data", 0);
+            log.log("Refreshing weather data", 0, "Weather");
             newData().then(() => {
                 resolve(lastResponse.data);
             }).catch((error) => {
@@ -65,7 +65,7 @@ iconCacheHandler = (icon, cb) => {
         cb();
         return;
     }
-    log.log("Fetching weather-icon " + icon + " from OpenWeatherMap", 0);
+    log.log("Fetching weather-icon " + icon + " from OpenWeatherMap", 0, "Weather");
     axios.get("https://openweathermap.org/img/wn/" + icon + "@" + config.weather.icons.size + ".png", { responseType: "arraybuffer" }).then((response) => {
         fs.writeFileSync("./res/weather-icons/" + icon + ".png", response.data);
         cachedIcons[icon] = { time: Date.now() };
@@ -74,10 +74,10 @@ iconCacheHandler = (icon, cb) => {
 }
 
 // Initialize the weather module
-log.log("Initializing weather module", 0);
-getWeather().then(() => log.log("Received initial weather state", 3)).catch((error) => log.log("Error initializing weather module: " + error, 2));
+log.log("Initializing weather module", 0, "Weather");
+getWeather().then(() => log.log("Received initial weather state", 3, "Weather")).catch((error) => log.log("Error initializing weather module: " + error, 2, "Weather"));
 if (!fs.existsSync("./res/weather-icons")) {
-    log.log("Creating weather-icon cache-directory", 0);
+    log.log("Creating weather-icon cache-directory", 0, "Weather");
     fs.mkdirSync("./res/weather-icons");
 }
 if (config.weather.icons.cache) config.weather.icons.precache.forEach((icon) => iconCacheHandler(icon, () => { }));

@@ -10,9 +10,10 @@ const logFile = path.join(logPath, "log.txt");
  * Log a message to the log file
  * @param {string} message The message to log
  * @param {number} log_level The log level of the message (default: 2)
+ * @param {string} module The module that is logging
  * @param {string} [time] The time to log (default: current time)
  */
-const log = (message, log_level = 0, time = new Date().toISOString()) => {
+const log = (message, log_level = 0, module, time = new Date().toISOString()) => {
     // Log level 0: Info (Color: Blue - Icon: i)
     // Log level 1: Warning (Color: Yellow - Icon: !)
     // Log level 2: Error (Color: Red - Icon: X)
@@ -43,10 +44,17 @@ const log = (message, log_level = 0, time = new Date().toISOString()) => {
     })();
     // Style Time
     const styled_time = config.logs.show_date ? new Date(time).toISOString() : new Date(time).toLocaleTimeString();
+    // Build message
+    let msg = `${styled_time} [${icon}] `;
+    if (config.logs.modules.show_names) {
+        msg += `(${module}) `;
+        for (let i = module.length; i < config.logs.modules.name_maxlength; i++) msg += " ";
+    }
+    msg += `${message}`;
     // Output message
-    console.log(`${color}${styled_time} [${icon}] ${message}\x1b[0m`);
+    console.log(`${color}${msg}\x1b[0m`);
     // Write message to log file
-    fs.appendFileSync(logFile, `${styled_time} [${icon}] ${message}\n`);
+    fs.appendFileSync(logFile, `${msg}\n`);
 }
 
 /**
@@ -82,7 +90,7 @@ const init = () => {
         fs.writeFileSync(logFile, "");
     }
     // Log initialization logs
-    for (i = 0; i < log_texts.length; i += 2) log(log_texts[i + 1], 0, log_texts[i]);
+    for (i = 0; i < log_texts.length; i += 2) log(log_texts[i + 1], 0, "logger", log_texts[i]);
 }
 
 module.exports = { init, log };

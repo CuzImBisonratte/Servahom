@@ -18,7 +18,7 @@ gc.init();
 // Init res dir
 if (!fs.existsSync("res")) {
     fs.mkdirSync("res");
-    log.log("Created res directory", 0);
+    log.log("Created res directory", 0, "Main-Thread");
 }
 
 // Init express
@@ -34,7 +34,7 @@ app.use("/api", api_srv);
 
 // Start HTTP-server
 app.listen(config.port, () => {
-    log.log("HTTP-Server started under http://localhost:" + config.port, 3);
+    log.log("HTTP-Server started under http://localhost:" + config.port, 3, "Main-Thread");
 });
 
 // GC exit
